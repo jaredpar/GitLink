@@ -3,5 +3,6 @@
   <PropertyGroup>
     <GitLinkEnabled Condition=" '$(DesignTimeBuild)' != 'true' and '$(Configuration)' == 'Release' and '$(GitLinkEnabled)' == '' and $(BuildingForLiveUnitTesting) != 'true' ">true</GitLinkEnabled>
     <GitLinkContinueOnError>true</GitLinkContinueOnError>
+    <GitLinkWarnOnMissingFiles>true</GitLinkWarnOnMissingFiles>
   </PropertyGroup>
 </Project>

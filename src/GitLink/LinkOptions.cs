@@ -18,6 +18,8 @@ namespace GitLink
 
         public bool SkipVerify { get; set; }
 
+        public bool SkipWarningOnMissingFiles { get; set; }
+
         public Uri GitRemoteUrl { get; set; }
 
         public string CommitId { get; set; }

@@ -100,7 +100,8 @@ namespace GitLink
                     try
                     {
                         Repository repo = repository.Value;
-                        repoSourceFiles = sourceFiles.ToDictionary(e => e, e => repo.GetNormalizedPath(e));
+                        var warnOnMissingFiles = !options.SkipWarningOnMissingFiles;
+                        repoSourceFiles = sourceFiles.ToDictionary(e => e, e => repo.GetNormalizedPath(e, warnOnMissingFiles));
                     }
                     catch (RepositoryNotFoundException)
                     {

@@ -18,7 +18,7 @@ namespace GitLink
         private static readonly ILog Log = LogManager.GetCurrentClassLogger();
         private static readonly char[] PathSeparators = new char[] { Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar };
 
-        internal static string GetNormalizedPath(this Repository repository, string path)
+        internal static string GetNormalizedPath(this Repository repository, string path, bool warnOnMissingFiles = true)
         {
             Argument.IsNotNull(nameof(repository), repository);
             Argument.IsNotNullOrEmpty(nameof(path), path);
@@ -39,7 +39,11 @@ namespace GitLink
 
                 if (entry == null)
                 {
-                    Log.Warning($"Unable to find file in git: \"{path}\".");
+                    if (warnOnMissingFiles)
+                    {
+                        Log.Warning($"Unable to find file in git: \"{path}\".");
+                    }
+
                     return path;
                 }
 

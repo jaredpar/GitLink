@@ -27,6 +27,8 @@ namespace GitLinkTask
 
         public string GitWorkingDirectory { get; set; }
 
+        public bool WarnOnMissingFiles { get; set; }
+
         private LinkMethod MethodEnum { get; set; }
 
         public override bool Execute()
@@ -37,6 +39,7 @@ namespace GitLinkTask
             {
                 Method = MethodEnum,
                 SkipVerify = SkipVerify,
+                SkipWarningOnMissingFiles = !WarnOnMissingFiles,
                 GitRemoteUrl = GitRemoteUrl != null ? new Uri(GitRemoteUrl, UriKind.Absolute) : null,
                 CommitId = GitCommitId,
                 GitWorkingDirectory = GitWorkingDirectory,
